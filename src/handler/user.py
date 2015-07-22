@@ -1,7 +1,6 @@
 import time
 
 from src.tools.base import BaseHandler
-
 from src.model.blue import User
 from src.tools.constant import UserCode, UserKey
 

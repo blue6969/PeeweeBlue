@@ -1,14 +1,17 @@
 # coding: utf-8
 import time
+
 import tornado
-from tornado.escape import json_decode, json_encode
+
+from tornado.escape import json_decode
+
 from playhouse.shortcuts import model_to_dict
-from src.model.blue import Moment, Image
+
+from src.model.blue import Moment, Image, get_exclude_field
 from src.tools.base import BaseHandler
 from src.tools.packer import gen_link_obj, dump_list_view_pack
 from src.tools import path_util as path
 from src.tools.constant import MomentKey
-
 
 __author__ = 'jarrah'
 
@@ -20,10 +23,11 @@ def url_spec(**kwargs):
         (r'/moment', MomentHandler, kwargs),
     ]
 
+
 IMG_DIR = path.img_uploads_path
 
-class MomentHandler(BaseHandler):
 
+class MomentHandler(BaseHandler):
     def get(self, *args, **kwargs):
         index = self.get_index()
         moment_items = self.get_moment_items(index=index)
@@ -32,10 +36,10 @@ class MomentHandler(BaseHandler):
         self.write(items)
 
     def get_moment_items(self, index=0):
-        rows = Moment.select().paginate(index, 1)
+        rows = Moment.select().paginate(index, 10)
         items = list()
         for row in rows:
-            items.append(model_to_dict(row))
+            items.append(model_to_dict(row, exclude=get_exclude_field()))
         return items
 
     '''multipart '''

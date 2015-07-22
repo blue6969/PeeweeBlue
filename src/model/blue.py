@@ -51,3 +51,7 @@ class Comment(MySQLModel):
 
 def create():
     get_db().create_tables([User, Image, Moment, Circle, Comment], safe=True)
+
+
+def get_exclude_field():
+    return [Image.id, Image.ts, User.bind_app_id, User.email, User.id, User.ts, User.password, User.phone, Circle.id, Moment.id]

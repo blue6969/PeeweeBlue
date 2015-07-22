@@ -15,13 +15,6 @@ KEY_RESPONSE_EXTRA = 'extra'
 MSG_OK = 'ok'
 MSG_ERROR = 'error'
 
-'''-------base define end-------'''
-
-'user'
-# CODE_EXISTED_USER = 1002
-# CODE_PASSWORD_ERROR = 1004
-# CODE_USER_NOT_EXIST = 1006
-# CODE_USER_MSG_CODE_ERROR = 1008
 
 class UserCode:
     EXISTED_USER = 1002
@@ -31,6 +24,7 @@ class UserCode:
 
     def __init__(self):
         pass
+
 
 class UserKey:
     JSON_PHONE = 'phone'
@@ -44,10 +38,9 @@ class UserKey:
     def __init__(self):
         pass
 
+
 class MomentKey:
-
     ARG_CIRCLE_ID = 'circle_id'
-
     JSON_CONTENT = 'content'
     JSON_TITLE = 'title'
     JSON_DATA = 'data'
